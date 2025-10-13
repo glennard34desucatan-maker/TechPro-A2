@@ -1,0 +1,44 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class ShoppingListProgram {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        List<String> shoppingList = new ArrayList<>();
+
+        System.out.println("Enter up to 5 items for your shopping list (type 'done' to finish):");
+
+        // Input items
+        for (int i = 0; i < 5; i++) {
+            System.out.print("Item " + (i + 1) + ": ");
+            String item = scanner.nextLine();
+            if (item.equalsIgnoreCase("done")) {
+                break;
+            }
+            shoppingList.add(item);
+        }
+
+        // Print the shopping list
+        System.out.println("\nShopping List:");
+        for (String item : shoppingList) {
+            System.out.println("- " + item);
+        }
+
+        // Count the number of items
+        int itemCount = shoppingList.size();
+        System.out.println("\nYou have " + itemCount + " items in your shopping list.");
+
+        // Search for an item
+        System.out.print("\nEnter an item to search for: ");
+        String searchTerm = scanner.nextLine();
+        if (shoppingList.contains(searchTerm)) {
+            System.out.println("Yes, '" + searchTerm + "' is in your shopping list.");
+        } else {
+            System.out.println("No, '" + searchTerm + "' is not in your shopping list.");
+        }
+
+        scanner.close();
+    }
+}
